@@ -10,7 +10,7 @@ _Sigh_ It's a long story. Let me summarise it in bullets:
 
 # So you just made a Dockerfile that FROMs their image and removes the bundled JDK?
 
-Hey, to be fair, I also kill the JAVA_HOME so that any unexpected uses of it will crash in a more predictable way. But yes, that's pretty much it.
+No, because due to Docker layers, that would still include 100mb of downloaded JDK, only to be unceremoniously thrown away at the next layer. I just took their dependencies part and run it on a clean alpine 3.9. If you know any ways to grab their Dockerfile automatically, filter the top part and apply it, I'm all ears!
 
 # Do you plan on updating this?
 
